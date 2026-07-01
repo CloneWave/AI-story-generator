@@ -2,7 +2,7 @@ from sqlalchemy.orm.path_registry import is_root
 from sqlalchemy import Column,Integer,String,JSON,DateTime,ForeignKey,Boolean
 from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
-from backend.db.database import Base
+from db.database import Base
 
 class Story(Base):
    __tablename__= "stories"

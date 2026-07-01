@@ -1,7 +1,8 @@
 
 from sqlalchemy import null
-from sqlalchemy import Column,Integer,String,Boolean
-from backend.db.database import Base
+from sqlalchemy import Column,Integer,String,Boolean,DateTime
+from sqlalchemy.sql import func
+from db.database import Base
 
 class StoryJob(Base):
     __tablename__="story_jobs"
