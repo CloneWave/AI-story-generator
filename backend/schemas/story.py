@@ -4,7 +4,7 @@ from datetime import datetime
 
 class StoryOptionsSchema(BaseModel):
     text:str
-    node_id:Optional[int] = None
+    node_id:Optional[str] = None
 
 class StoryNodeBase(BaseModel):
     content:str
@@ -12,12 +12,12 @@ class StoryNodeBase(BaseModel):
     is_winning_ending:bool=False
 
 class CompleteStoryNodeResponse(StoryNodeBase):
-    id:int
+    id:str
     options:List[StoryOptionsSchema]=[]
 
     class Config:
         from_attributes=True
-        
+            
 class StoryBase(BaseModel):
     title:str
     session_id:Optional[str]=None
@@ -32,7 +32,7 @@ class CompleteStoryResponse(BaseModel):
     id:int
     created_at:datetime
     root_node:CompleteStoryNodeResponse
-    all_nodes:Dict[int,CompleteStoryNodeResponse]
+    all_nodes:Dict[str,CompleteStoryNodeResponse]
 
     class Config:
         from_attributes=True

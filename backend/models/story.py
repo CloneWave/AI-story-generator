@@ -13,9 +13,11 @@ class Story(Base):
 
    nodes=relationship("StoryNode", back_populates="story")
 
+import uuid
+
 class StoryNode(Base):
    __tablename__="story_nodes"
-   id=Column(String,primary_key=True,index=True)
+   id=Column(String,primary_key=True,index=True, default=lambda: str(uuid.uuid4()))
    story_id=Column(Integer,ForeignKey("stories.id"))
    content=Column(String)
    is_root=Column(Boolean,default=False)
