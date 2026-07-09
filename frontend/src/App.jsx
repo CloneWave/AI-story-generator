@@ -1,7 +1,20 @@
-import React from "react";
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import StoryLoader from "./components/StoryLoader";
 const App = () => {
-  return <div>App</div>;
+  return (
+    <Router>
+      <div className="app-container">
+        <header>
+          <h1>Interactive Story Generator</h1>
+        </header>
+        <main>
+          <Routes>
+            <Route path="/story/:id" element={<StoryLoader />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
+  );
 };
 
 export default App;

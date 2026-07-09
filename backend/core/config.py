@@ -7,7 +7,6 @@ class Settings(BaseSettings):
     DEBUG:bool=False
     DATABASE_URL:str
     ALLOWED_ORIGINS:str=""
-    OPENAI_API_KEY:str
     GOOGLE_API_KEY:str
     @field_validator("ALLOWED_ORIGINS")
     def parse_allowed_origins(cls, v:str)->List[str]:

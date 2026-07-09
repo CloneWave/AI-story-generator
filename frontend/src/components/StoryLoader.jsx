@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import LoadingStatus from "./LoadingStatus";
-
+import StoryGame from "./StoryGame";
 const API_BASE_URL = "/api";
 
 const StoryLoader = () => {
-  const { id } = useParams;
-  const navigate = useNavigate;
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [story, setStory] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -26,7 +26,7 @@ const StoryLoader = () => {
       setStory(response.data);
       setIsLoading(false);
     } catch (err) {
-      if (err.resonse?.status === 404) {
+      if (err.response?.status === 404) {
         setError("Story not found");
       } else {
         setError("Failed to load the story");
@@ -53,7 +53,13 @@ const StoryLoader = () => {
     );
   }
   if (story) {
-    return <div className="story-loader"></div>;
+    console.log(story);
+
+    return (
+      <div className="story-loader">
+        <StoryGame story={story} onNewStory={createNewStory} />
+      </div>
+    );
   }
 };
 
